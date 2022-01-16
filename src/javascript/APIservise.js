@@ -5,17 +5,17 @@ export default class apiService {
 
     constructor() {
         this.searchQuery = '';
-       
+        this.pageNum = 1;
      }
 
     fetchPopularMovies() {
-        const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=1`;
-        return fetch(url).then(r => r.json()).then(data => {return data});
+        const url = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${this.pageNum}`;
+        return fetch(url).then(result =>  result.json())
     }
 
     fetchSearchMovies() {
-        const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=1&include_adult=false`;
-        return fetch(url).then(r => r.json()).then(data => {return data});   
+        const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.pageNum}&include_adult=false`;
+        return fetch(url).then(result => result.json());   
     }
 
 
@@ -31,5 +31,19 @@ export default class apiService {
 
     set query(newQuery) { 
         this.searchQuery = newQuery;
+    }
+
+
+
+    get page() { 
+        return thid.pageNum;
+    }
+
+    set page(newPageNum) {
+        this.pageNum = newPageNum;
+    }
+    
+    resetPage() { 
+        this.pageNum = 1;
     }
 };
