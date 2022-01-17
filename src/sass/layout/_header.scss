@@ -1,4 +1,5 @@
 .header {
+  height: 230px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
     url(../images/mobile1x.jpg);
   background-repeat: no-repeat;
@@ -128,11 +129,19 @@
   }
 }
 
-.search-form__icon {
+.search-form__btn {
   width: 12px;
   height: 12px;
   position: absolute;
-  bottom: 5px;
+  bottom: 6px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+.search-form__icon {
+  position: absolute;
+  bottom: 6px;
   right: 0px;
 }
 
