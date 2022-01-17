@@ -7,7 +7,10 @@
 // @import './example';
 
 // base ===============================================
+@import './base/common';
 @import './base/container';
+@import './base/footer';
 // components =========================================
 @import './components/body-main';
+
 // utils ==============================================
