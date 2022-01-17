@@ -23,10 +23,14 @@
   </div>
 
   <div class="search-form">
-    <input type="text" name="search" id="search" placeholder="Поиск фильмов" class="search-form__input">
-    <svg width="12" height="12" class="search-form__icon">
+    <form class="main-form_js">
+    <input type="text" name="query" id="search" autocomplete="off" placeholder="Поиск фильмов" class="search-form__input">
+    <button type="submit">
+      <svg width="12" height="12" class="search-form__icon">
       <use href="./images/symbol-defs.svg#icon-search"></use>
     </svg>
+  </button>
+  </form>
   </div>
 
   </div>
