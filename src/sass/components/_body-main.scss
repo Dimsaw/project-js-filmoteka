@@ -1,5 +1,4 @@
 
-
 .films__list {
   display: flex;
   flex-wrap: wrap;
@@ -60,9 +59,11 @@
   height: 100%;
   border-radius: 5px;
 }
+
 .film__information {
   padding-top: 10px;
 }
+
 .film__title {
   font-family: Roboto;
   font-style: normal;
@@ -71,7 +72,7 @@
   line-height: 14px;
   text-transform: uppercase;
 
-  color: var($main-dark-color);
+  color: $main-dark-color;
 }
 
 .film__genre {
@@ -81,7 +82,7 @@
   font-size: 12px;
   line-height: 16px;
 
-  color: var($main-accent-color);
+  color: $main-accent-color;
 }
 .film__year {
   font-family: Roboto;
@@ -90,6 +91,6 @@
   font-size: 12px;
   line-height: 16px;
 
-  color: var($main-accent-color);
+  color: $main-accent-color;
 }
 
