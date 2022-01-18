@@ -630,11 +630,4 @@ p {
   pointer-events: none;
   visibility: hidden;
 }
-
-body.backdrop-team {
-  overflow: hidden;
-  position: fixed;
-  overflow-x: hidden;
-  overflow-y: scroll !important;
-}
 /*# sourceMappingURL=main.css.map */
