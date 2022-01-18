@@ -71,7 +71,7 @@
   line-height: 14px;
   text-transform: uppercase;
 
-  color: var($main-dark-color);
+  color: $main-dark-color;
 }
 
 .film__genre {
@@ -81,7 +81,7 @@
   font-size: 12px;
   line-height: 16px;
 
-  color: var($main-accent-color);
+  color: $main-accent-color;
 }
 .film__year {
   font-family: Roboto;
@@ -90,5 +90,5 @@
   font-size: 12px;
   line-height: 16px;
 
-  color: var($main-accent-color);
+  color: $main-accent-color;
 }
