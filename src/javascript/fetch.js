@@ -1,3 +1,4 @@
+import {renderHomeMarkup, renderLibraryMarkup} from './markup';
 import apiService from "./APIservise";  //Імпорт класу APIservise
 const searchForm = document.querySelector('.main-form_js');
 const header = document.querySelector('header');
@@ -18,6 +19,7 @@ async function getSearchMovies(e) {
   movieApiService.query = searchValue;
   
   movieApiService.resetPage();
+  
   //movieApiService.page = ; Додати посилання на зміну номерації сторінок!!!!
 
   if (searchValue === '') {//якщо натиснули "пошук" з пустим інпутом
@@ -36,6 +38,7 @@ async function getSearchMovies(e) {
       };
 
       addMoviesCollectionToLocalStorage(movies);
+      renderHomeMarkup(movies.results);
 
   } catch (error) {console.log(error) };
 
@@ -51,10 +54,11 @@ async function getPopularMovies(e) {
   localStorage.removeItem("genres"); // Видаляє список жанрів при першому завантаженні із localstorage, ключ 'genres'; 
     try {
       const movies = await movieApiService.fetchPopularMovies();//Зверення до масиву об'єктів: "movies.results"
-      const genres = await movieApiService.fetchGenres(); 
-
+      const genres = await movieApiService.fetchGenres();
+      
       localStorage.setItem("genres", JSON.stringify(genres));// Додає список жанрів при першому завантаженні до localstorage
       addMoviesCollectionToLocalStorage(movies);
+      renderHomeMarkup(movies.results);
       
 
   } catch (error) {console.log(error) };
