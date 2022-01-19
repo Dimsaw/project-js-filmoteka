@@ -95,3 +95,27 @@
 
   color: $main-accent-color;
 }
+
+.back_to_top {
+  position: fixed;
+  bottom: 80px;
+  right: 60px;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #d3b6b6;
+  color: rgb(14, 13, 13);
+  cursor: pointer;
+  border-radius: 15px;
+  display: none;
+}
+
+.back_to_top:hover {
+  background: #e9ebec;
+}
+
+.back_to_top-show {
+  display: block;
+}
