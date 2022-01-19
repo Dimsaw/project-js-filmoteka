@@ -1,4 +1,6 @@
-
+.main {
+  min-height: 60vh;
+}
 .films__list {
   display: flex;
   flex-wrap: wrap;
@@ -93,4 +95,3 @@
 
   color: $main-accent-color;
 }
-
