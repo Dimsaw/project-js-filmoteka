@@ -1,19 +1,20 @@
 import Pagination from 'tui-pagination';
-
+import { fetchMovies } from './fetchMovies';
 
 // const API_KEY = 'c7ed46652640bc5a91d5a4e73d915c28';
 
-const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
-const totalItems = totalItemsParse.total_pages;
+// const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
+// const totalItems = totalItemsParse.total_results;
 
 const options = {
-  totalItems,
-  itemsPerPage: 1,
+  totalItems: 20000, 
+  itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
+  usageStatistics: false,
   template: {
     page: '<button class="tui-page-btn" >{{page}}</button>',
     currentPage: '<button class="tui-page-btn tui-is-selected" data-number="{{page}}" >{{page}}</button>',
@@ -34,14 +35,9 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
-const paginationBox = document.querySelector('.tui-pagination');
+pagination.on("afterMove", async ({ page }) => {
+  const newMovies = await fetchMovies(page);
+    pagination.setTotalItems(newMovies.total_results);
+})
 
-paginationBox.addEventListener('click', onButtonClick)
-
-function onButtonClick(event) {
-  Array.prototype.forEach.call(event.currentTarget.children, ({ classList }) => {
-    if (classList.contains("tui-is-selected")) {
-      const currentButton = document.querySelector('.tui-is-selected')
-    }
-  });
-}
+export { pagination };

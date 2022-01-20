@@ -1,4 +1,5 @@
 import apiService from "./APIservice";
+import { pagination } from "./renderPaginationBlock";
 import { renderHomeMarkup, renderLibraryMarkup } from './markup';
 
 
@@ -24,6 +25,8 @@ function onSubmitForm(e) {
   e.preventDefault();
   movieApiService.searchQuery = e.currentTarget.elements.query.value.trim();
 
+  pagination.movePageTo(1);
+
   if (movieApiService.searchQuery === '') {
     addErrorMessage();
     setTimeout(removeErrorMessage, 2000);
@@ -35,7 +38,9 @@ function onSubmitForm(e) {
 }
 
 
-async function fetchMovies() {
+async function fetchMovies(page = 1) {
+  movieApiService.pageNum = page;
+
   let movies = {};
  
   if (movieApiService.searchQuery) {
@@ -51,7 +56,8 @@ async function fetchMovies() {
   }
 
  addMoviesCollectionToLocalStorage(movies)
- renderHomeMarkup(movies.results)
+  renderHomeMarkup(movies.results)
+  return movies;
 };
 
 
@@ -82,3 +88,5 @@ function removeErrorMessage() {
   searchForm.reset();
   
 };
+
+export { fetchMovies };
