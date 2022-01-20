@@ -120,17 +120,23 @@
 
 .nav__item {
   height: 17px;
+  transition: 550ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav__item:not(:last-child) {
   margin-right: 39px;
 }
 
-// .nav__item:hover,
-// .nav__item:focus {
-//   border-bottom: 3px solid $notification-color;
-//   cursor: pointer;
-// }
+.nav__item:hover,
+.nav__item:focus {
+  cursor: pointer;
+
+  transform: scale(1.5);
+}
+
+.nav__link__current {
+  border-bottom: 3px solid #ff6b08;
+}
 
 .search-form {
   width: 100%;
@@ -154,6 +160,7 @@
   right: 0px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .search-form__icon {
@@ -244,4 +251,34 @@ button + button {
   @media screen and(min-width: 768px) {
     margin-left: 15px;
   }
+}
+
+.error-message {
+  display: block;
+  text-align: left;
+  visibility: hidden;
+
+  font-family: $main-font-family;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  opacity: 0.9;
+  color: $notification-color;
+
+  transition: opacity 250ms ease-in-out;
+
+  @media screen and( min-width:768px) {
+    text-align: center;
+  }
+}
+
+.is_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.is_visible {
+  visibility: visible;
+  opacity: 0.9;
 }
