@@ -105,6 +105,7 @@
 
 .nav__item {
   height: 17px;
+  transition: 550ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav__item:not(:last-child) {
@@ -113,8 +114,13 @@
 
 .nav__item:hover,
 .nav__item:focus {
-  border-bottom: 3px solid $notification-color;
   cursor: pointer;
+
+  transform: scale(1.5);
+}
+
+.nav__link__current {
+  border-bottom: 3px solid #ff6b08;
 }
 
 .search-form {
