@@ -1,4 +1,4 @@
-.header {
+.home {
   height: 230px;
   background-image: linear-gradient(to right, $header-background, $header-background),
     url(../images/mobile1x.jpg);
@@ -16,14 +16,11 @@
   }
 
   @media screen and (min-width: 768px) {
-    // max-width: 1023px;
-    // padding-top: 40px;
-    // padding-bottom: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     background-image: linear-gradient(to right, $header-background, $header-background),
       url(../images/tablet1x.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
 
     @media screen and (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -34,10 +31,11 @@
   }
 
   @media screen and (min-width: 1024px) {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
-      url(../images/desctop1x.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
+      url(../images/desctop1x.jpg);
 
     @media screen and (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -53,8 +51,8 @@
   height: 230px;
   padding-top: 48px;
   padding-bottom: 43px;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
 
   @media screen and (min-width: 768px) {
     max-width: 1023px;
@@ -97,6 +95,23 @@
   color: $main-light-color;
 }
 
+.nav__link--current {
+  position: relative;
+
+  // color: $notification-color;
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: -2px;
+    display: block;
+    width: 100%;
+    height: 3px;
+
+    background-color: $notification-color;
+  }
+}
+
 .nav {
   padding-left: 0;
   display: flex;
@@ -111,11 +126,11 @@
   margin-right: 39px;
 }
 
-.nav__item:hover,
-.nav__item:focus {
-  border-bottom: 3px solid $notification-color;
-  cursor: pointer;
-}
+// .nav__item:hover,
+// .nav__item:focus {
+//   border-bottom: 3px solid $notification-color;
+//   cursor: pointer;
+// }
 
 .search-form {
   width: 100%;
@@ -142,6 +157,7 @@
 }
 
 .search-form__icon {
+  background-image: url(../images/search.svg);
   position: absolute;
   bottom: 6px;
   right: 0px;
@@ -169,4 +185,63 @@
 .search-form__input:hover,
 .search-form__input:focus {
   outline: none;
+}
+
+.library {
+  height: 230px;
+  background-image: linear-gradient(to right, $header-background, $header-background),
+    url(../images/2mobile1x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(../images/2mobile2x.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to right, $header-background, $header-background),
+      url(../images/2tablet1x.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/2tablet2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
+      url(../images/2desctop1x.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/2desctop2x.jpg);
+    }
+  }
+}
+.buttons {
+  margin-top: 49px;
+  display: flex;
+  justify-content: center;
+}
+
+button + button {
+  margin-left: 20px;
+
+  @media screen and(min-width: 768px) {
+    margin-left: 15px;
+  }
 }
