@@ -1,0 +1,26 @@
+.backdrop-team {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(114, 91, 91, 0.664);
+  opacity: 1;
+  backdrop-filter: blur(2px);
+
+  transition: opacity 250ms ease-in;
+}
+
+.backdrop-team.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+body.backdrop-team {
+  overflow: hidden;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll !important;
+}
