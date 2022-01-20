@@ -25,24 +25,4 @@ export default class apiService {
         return data.genres;
       });
   }
-
-  get query() {
-    return this.searchQuery;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-
-  get page() {
-    return thid.pageNum;
-  }
-
-  set page(newPageNum) {
-    this.pageNum = newPageNum;
-  }
-
-  resetPage() {
-    this.pageNum = 1;
-  }
 }
