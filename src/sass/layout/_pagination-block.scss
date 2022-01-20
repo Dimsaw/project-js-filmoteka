@@ -16,7 +16,7 @@
 
 .tui-pagination {
     height: 28px;
-    margin: 14px 0 12px;
+    margin-bottom: 72px;
     line-height: normal;
     text-align: center;
     font-size: 0;
@@ -67,6 +67,25 @@
     line-height: 26px;
     white-space: nowrap;
     font-weight: normal;
+}
+
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next,
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+    @media screen and (max-width: $tablet - 1px) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+    }
 }
 
 .tui-pagination .tui-first,
