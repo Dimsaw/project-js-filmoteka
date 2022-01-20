@@ -139,6 +139,7 @@
   right: 0px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .search-form__icon {
@@ -169,4 +170,34 @@
 .search-form__input:hover,
 .search-form__input:focus {
   outline: none;
+}
+
+.error-message {
+  display: block;
+  text-align: left;
+  visibility: hidden;
+
+  font-family: $main-font-family;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  opacity: 0.9;
+  color: $notification-color;
+
+  transition: opacity 250ms ease-in-out;
+
+  @media screen and( min-width:768px) {
+    text-align: center;
+  }
+}
+
+.is_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.is_visible {
+  visibility: visible;
+  opacity: 0.9;
 }
