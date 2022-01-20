@@ -8,6 +8,7 @@
   background-color: rgba(114, 91, 91, 0.945);
   opacity: 1;
   backdrop-filter: blur(2px);
+  overflow-y: scroll;
 
   transition: all 300ms ease-in;
 }
