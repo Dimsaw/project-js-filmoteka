@@ -1,13 +1,11 @@
 import Pagination from 'tui-pagination';
 import { fetchMovies } from './fetchMovies';
 
-// const API_KEY = 'c7ed46652640bc5a91d5a4e73d915c28';
-
-// const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
-// const totalItems = totalItemsParse.total_results;
+const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
+const totalItems = totalItemsParse.total_results;
 
 const options = {
-  totalItems: 20000, 
+  totalItems, 
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -37,7 +35,9 @@ const pagination = new Pagination('pagination', options);
 
 pagination.on("afterMove", async ({ page }) => {
   const newMovies = await fetchMovies(page);
-    pagination.setTotalItems(newMovies.total_results);
+  if (page === 1) {
+    pagination.reset(newMovies.total_results)
+  }
 })
 
 export { pagination };
