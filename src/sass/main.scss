@@ -7,6 +7,7 @@
 // @import './example';
 @import './utils/variables';
 // base ===============================================
+
 @import './base/common';
 @import './base/container';
 @import './base/footer';
@@ -16,3 +17,4 @@
 // utils ==============================================
 @import './layout/header';
 @import './layout/pagination-block';
+@import './layout/preloader';
