@@ -2,9 +2,30 @@ function renderHomeMarkup(array) {
     
    const homeMarkup = array.map(({ poster_path, title, genre_ids, release_date }) => {
     const date = new Date(release_date);
+
     const year = date.getFullYear();   
     const genres = genresTextArray(genre_ids);
-         
+
+     
+     if (poster_path === null) {
+       const randomPicture = "https://picsum.photos/200/300"
+       
+       return `<li class="film__item">
+              <a class="film__link" href="">
+                <div class="film__card">
+                  <div class="film__thumb">
+                    <img class="film__image" src="${randomPicture}" alt="${title}"loading="lazy" />
+                  </div>
+                  <div class="film__information">
+                    <p class="film__title">${title}</p>
+                    <span class="film__genre">${genre_ids}</span>
+                    <span class="film__year">| ${year}</span>
+                  </div>
+                </div>
+              </a>
+            </li>`
+     }
+
      return `<li class="film__item">
               <a class="film__link" href="">
                 <div class="film__card">
@@ -30,6 +51,7 @@ function renderLibraryMarkup(array) {
   const libraryMarkup = array.map(({ poster_path, title, genre_ids, release_date }) => {
     const date = new Date(release_date);
     const year = date.getFullYear();
+
     const genres = genresTextArray(genre_ids);
 
     return `<li class="film__item">
