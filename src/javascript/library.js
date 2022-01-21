@@ -16,7 +16,7 @@ function onAddLibraryPage(event) {
   home.classList.remove('nav__link--current');
   library.classList.add('nav__link--current');
   input.innerHTML = '';
-  buttons.innerHTML = `  <button type="button">Watched</button>
+  buttons.innerHTML = `<button type="button">Watched</button>
   <button type="button">queue</button>`;
 }
 

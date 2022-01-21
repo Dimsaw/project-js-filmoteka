@@ -240,7 +240,7 @@
   }
 }
 .buttons {
-  margin-top: 49px;
+  margin-top: 46px;
   display: flex;
   justify-content: center;
 }
@@ -254,7 +254,7 @@ button + button {
 }
 
 .error-message {
-  display: block;
+  display: none;
   text-align: left;
   visibility: hidden;
 
@@ -262,6 +262,7 @@ button + button {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
+  margin-top: 22px;
 
   opacity: 0.9;
   color: $notification-color;
@@ -279,6 +280,7 @@ button + button {
 }
 
 .is_visible {
+  display: block;
   visibility: visible;
   opacity: 0.9;
 }
