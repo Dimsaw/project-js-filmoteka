@@ -1,6 +1,6 @@
 function renderHomeMarkup(array) {  
     
-   const homeMarkup = array.map(({ poster_path, title, genre_ids, release_date }) => {
+   const homeMarkup = array.map(({ id, poster_path, title, genre_ids, release_date }) => {
     const date = new Date(release_date);
 
     const year = date.getFullYear();   
@@ -11,10 +11,9 @@ function renderHomeMarkup(array) {
        const randomPicture = "https://picsum.photos/200/300"
        
        return `<li class="film__item">
-              <a class="film__link" href="">
                 <div class="film__card">
                   <div class="film__thumb">
-                    <img class="film__image" src="${randomPicture}" alt="${title}"loading="lazy" />
+                    <img class="film__image" id="${id}" src="${randomPicture}" alt="${title}"loading="lazy" />
                   </div>
                   <div class="film__information">
                     <p class="film__title">${title}</p>
@@ -22,15 +21,13 @@ function renderHomeMarkup(array) {
                     <span class="film__year">| ${year}</span>
                   </div>
                 </div>
-              </a>
             </li>`
      }
 
      return `<li class="film__item">
-              <a class="film__link" href="">
                 <div class="film__card">
                   <div class="film__thumb">
-                    <img class="film__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}"loading="lazy" />
+                    <img class="film__image" id="${id}" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}"loading="lazy" />
                   </div>
                   <div class="film__information">
                     <p class="film__title">${title}</p>
@@ -38,7 +35,6 @@ function renderHomeMarkup(array) {
                     <span class="film__year">| ${year}</span>
                   </div>
                 </div>
-              </a>
             </li>`}
   ).join("");
   
@@ -48,7 +44,7 @@ function renderHomeMarkup(array) {
 
 function renderLibraryMarkup(array) {
   
-  const libraryMarkup = array.map(({ poster_path, title, genre_ids, release_date }) => {
+  const libraryMarkup = array.map(({ id, poster_path, title, genre_ids, release_date }) => {
     const date = new Date(release_date);
     const year = date.getFullYear();
 
@@ -58,7 +54,7 @@ function renderLibraryMarkup(array) {
               <a class="film__link" href="">
                 <div class="film__card">
                   <div class="film__thumb">
-                    <img class="film__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
+                    <img class="film__image" id="${id}" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
                   </div>
                   <div class="film__information">
                     <p class="film__title">${title}</p>
@@ -83,5 +79,6 @@ function genresTextArray(genresArray) {
        return genresName.slice(0, 3).join(", ");
        
 }
+
      
-export {renderHomeMarkup, renderLibraryMarkup};
+export {renderHomeMarkup, renderLibraryMarkup, genresTextArray};
