@@ -44,14 +44,13 @@ function renderHomeMarkup(array) {
 
 function renderLibraryMarkup(array) {
   
-  const libraryMarkup = array.map(({ id, poster_path, title, genre_ids, release_date }) => {
+  const libraryMarkup = array.map(({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
     const date = new Date(release_date);
     const year = date.getFullYear();
 
     const genres = genresTextArray(genre_ids);
 
     return `<li class="film__item">
-              <a class="film__link" href="">
                 <div class="film__card">
                   <div class="film__thumb">
                     <img class="film__image" id="${id}" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
@@ -63,7 +62,7 @@ function renderLibraryMarkup(array) {
                     <span class="film__rating">${vote_average}</span>
                   </div>
                 </div>
-              </a></li>`}
+              </li>`}
   ).join("");
   
   document.querySelector('.films__list').innerHTML = libraryMarkup;          
