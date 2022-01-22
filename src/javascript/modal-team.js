@@ -4,19 +4,22 @@ const closeButton = document.querySelector('.js-team-close');
 const students = document.querySelector('.js-students');
 const toTop = document.querySelector('#toTopBtn');
 
-students.addEventListener('click', handleStudents);
+students.addEventListener('click', handleStudentsModal);
 
-function handleStudents(e) {
+function handleStudentsModal(e) {
   e.preventDefault();
   modal.classList.remove('hidden');
-  body.style.overflow = 'hidden';
   toTop.classList.add('js-hidden');
-
+  toggleOverflow();
   closeButton.addEventListener('click', onCloseBtnClick);
 }
 
 function onCloseBtnClick() {
   modal.classList.add('hidden');
-  body.style.overflow = 'auto';
   toTop.classList.remove('js-hidden');
+  toggleOverflow();
+}
+
+export function toggleOverflow() {
+  body.classList.toggle('overflow-off');
 }
