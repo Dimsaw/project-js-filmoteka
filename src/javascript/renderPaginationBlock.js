@@ -3,11 +3,11 @@ import { fetchMovies, onSubmitForm } from './fetchMovies';
 
 
 const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
-const totalItems = totalItemsParse.total_results;
+// const totalItems = totalItemsParse.total_results;
 
 
 const options = {
-  totalItems, 
+  totalItems: 200, 
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -38,9 +38,9 @@ const pagination = new Pagination('pagination', options);
 
 pagination.on("afterMove", async ({ page }) => {
   const newMovies = await fetchMovies(page);
+
   if (page === 1) {
     pagination.reset(newMovies.total_results)
-    // pagination.setTotalItems(newMovies.total_results)
   }
 })
 
