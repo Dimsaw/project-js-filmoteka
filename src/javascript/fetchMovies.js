@@ -10,11 +10,6 @@ const searchForm = document.querySelector('.main-form_js');
 
 searchForm.addEventListener('submit', onSubmitForm);
 
-
-
-
-fetchMovies()
-
 try {
   fetchMovies();
   const genres = movieApiService.fetchGenres();
@@ -26,7 +21,6 @@ try {
  async function onSubmitForm(e) {
   e.preventDefault();
   movieApiService.searchQuery = e.currentTarget.elements.query.value.trim();
-  // pagination.movePageTo(1);
 
 
   if (movieApiService.searchQuery === '') {
@@ -36,6 +30,7 @@ try {
   }
   
   const movies = await  fetchMovies()
+  pagination.movePageTo(1);
   pagination.setTotalItems(movies.total_results)
 
 }
@@ -61,6 +56,7 @@ async function fetchMovies(page = 1) {
     setTimeout(removeErrorMessage, 2000);
     return
   }
+  pagination.setTotalItems(movies.total_results)
 
   addMoviesCollectionToLocalStorage(movies)
   
