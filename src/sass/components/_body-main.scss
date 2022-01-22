@@ -1,5 +1,5 @@
 .main {
-  min-height: 60vh;
+  min-height: 75vh;
 }
 .films__list {
   display: flex;
@@ -25,6 +25,7 @@
 .film__card {
   border-radius: 10px;
   transition: transform 250ms linear;
+  cursor: pointer;
 
   @media screen and (min-width: 320px) {
     margin-bottom: 20px;
