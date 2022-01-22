@@ -3,11 +3,11 @@ import { fetchMovies, onSubmitForm } from './fetchMovies';
 
 
 const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
-const totalItems = totalItemsParse.total_results;
+// const totalItems = totalItemsParse.total_results;
 
 
 const options = {
-  totalItems, 
+  totalItems:200, 
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
