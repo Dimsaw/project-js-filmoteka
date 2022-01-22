@@ -44,7 +44,7 @@ function renderHomeMarkup(array) {
 
 function renderLibraryMarkup(array) {
   
-  const libraryMarkup = array.map(({ id, poster_path, title, genre_ids, release_date }) => {
+  const libraryMarkup = array.map(({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
     const date = new Date(release_date);
     const year = date.getFullYear();
 
