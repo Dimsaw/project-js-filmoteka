@@ -7,13 +7,20 @@
 // @import './example';
 @import './utils/variables';
 // base ===============================================
+
 @import './base/common';
 @import './base/container';
 @import './base/footer';
 // components =========================================
 @import './components/body-main';
 @import './components/modal';
+@import './components/team-section';
+
 
 // utils ==============================================
 @import './layout/header';
 @import './layout/pagination-block';
+@import './layout/preloader';
+
+@import './components/backdrop-team';
+
