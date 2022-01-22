@@ -1,0 +1,50 @@
+.main {
+  position: relative;
+}
+.preloader {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $spiner-box-bgc;
+
+  transition: visibility 250ms linear;
+}
+
+.spinner {
+  position: fixed;
+  top: calc(50% - (60px / 2));
+  left: calc(50% - (60px / 2));
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  z-index: 100;
+
+  border: 8px solid $header-background;
+  border-right: 8px solid $main-accent-color;
+  animation: spin 750ms linear infinite;
+
+  @media screen and( min-width:768px) {
+    top: calc(50% - (100px / 2));
+    left: calc(50% - (100px / 2));
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.preloader-off {
+  visibility: hidden;
+}
+
+.preloader-of {
+  visibility: visible;
+}
