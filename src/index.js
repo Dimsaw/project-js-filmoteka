@@ -5,3 +5,7 @@ import './javascript/preloader';
 
 import './javascript/renderPaginationBlock';
 import './javascript/scrollToTop';
+
+import './javascript/modal-team';
+
+
