@@ -32,7 +32,6 @@
 }
 
 .team-container {
-  display: flex;
   margin-left: auto;
   margin-right: auto;
   padding: 80px 20px;
@@ -54,6 +53,16 @@
   }
 }
 
+.team-name {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  color: $main-light-color;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-shadow: 2px 0 10px rgba(226, 227, 228, 0.418);
+}
+
 .team-member {
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +80,11 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    transition: box-shadow 250ms ease-in;
+
+    &:hover {
+      box-shadow: 2px 0 10px $main-light-color;
+    }
   }
 
   &__name,
