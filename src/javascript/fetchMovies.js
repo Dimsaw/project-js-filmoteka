@@ -10,11 +10,6 @@ const searchForm = document.querySelector('.main-form_js');
 
 searchForm.addEventListener('submit', onSubmitForm);
 
-
-
-
-fetchMovies()
-
 try {
   fetchMovies();
   const genres = movieApiService.fetchGenres();
