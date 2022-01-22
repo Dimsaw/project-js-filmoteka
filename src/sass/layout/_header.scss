@@ -35,10 +35,10 @@
   @media screen and (min-width: 1024px) {
     background-repeat: no-repeat;
     background-size: cover;
-
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
       url(../images/desctop1x.jpg);
 
+    max-width: 1024px;
     @media screen and (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -53,8 +53,6 @@
   height: 230px;
   padding-top: 48px;
   padding-bottom: 43px;
-  // padding-left: 20px;
-  // padding-right: 20px;
 
   @media screen and (min-width: 768px) {
     max-width: 1023px;
@@ -99,8 +97,6 @@
 
 .nav__link--current {
   position: relative;
-
-  // color: $notification-color;
 
   &::after {
     position: absolute;
@@ -234,6 +230,8 @@
     background-size: cover;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
       url(../images/2desctop1x.jpg);
+
+    max-width: 1024px;
 
     @media screen and (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
