@@ -1,9 +1,11 @@
 .home {
   height: 230px;
+  max-width: 100%;
   background-image: linear-gradient(to right, $header-background, $header-background),
     url(../images/mobile1x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   margin-left: auto;
   margin-right: auto;
@@ -196,10 +198,12 @@
 
 .library {
   height: 230px;
+  max-width: 100%;
   background-image: linear-gradient(to right, $header-background, $header-background),
     url(../images/2mobile1x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   margin-left: auto;
   margin-right: auto;
