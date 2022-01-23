@@ -23,3 +23,9 @@ function onCloseBtnClick() {
 export function toggleOverflow() {
   body.classList.toggle('overflow-off');
 }
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    onCloseBtnClick();
+  }
+});
