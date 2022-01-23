@@ -11,9 +11,9 @@ const searchForm = document.querySelector('.main-form_js');
 searchForm.addEventListener('submit', onSubmitForm);
 
 try {
-  fetchMovies();
   const genres = movieApiService.fetchGenres();
-  genres.then(genre => localStorage.setItem("genres", JSON.stringify(genre)) )
+  genres.then(genre => localStorage.setItem("genres", JSON.stringify(genre)));
+  fetchMovies();
 } catch (error) {
   console.log(error);
 }
@@ -31,8 +31,7 @@ try {
   
   const movies = await  fetchMovies()
   pagination.movePageTo(1);
-  pagination.setTotalItems(movies.total_results)
-
+ 
 }
 
 
