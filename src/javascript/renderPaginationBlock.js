@@ -16,8 +16,8 @@ const options = {
   lastItemClassName: 'tui-last-child',
   usageStatistics: false,
   template: {
-    page: '<button class="tui-page-btn" >{{page}}</button>',
-    currentPage: '<button class="tui-page-btn tui-is-selected" data-number="{{page}}" >{{page}}</button>',
+    page: '<button class="tui-page-btn">{{page}}</button>',
+    currentPage: '<button class="tui-page-btn tui-is-selected" data-number="{{page}}">{{page}}</button>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -43,9 +43,5 @@ pagination.on("afterMove", async ({ page }) => {
     pagination.reset(newMovies.total_results)
   }
 })
-
-
-
-
 
 export { pagination };
