@@ -1,12 +1,23 @@
 import { genresTextArray } from './markup';
+import { toggleOverflow } from './modal-team';
+
 const modalCloseBtn = document.querySelector('[data-modal-close]');
+const modalOpenBtn = document.querySelector('[data-modal-open]');
 const modal = document.querySelector('[data-modal]');
 const filmsContainer = document.querySelector('.films__list');
 const modalUI = document.querySelector('.modalUI');
+const body = document.querySelector('body');
+
+
 filmsContainer.addEventListener('click', onFilmClick);
 modalCloseBtn.addEventListener('click', toggleModal);
+modalOpenBtn.addEventListener('click', toggleOverflow);
+
 function toggleModal() {
   modal.classList.toggle('is-hidden');
+  toggleOverflow();
+
+
 }
 function onFilmClick(e) {
   if (e.target.nodeName !== 'IMG') {
@@ -17,10 +28,11 @@ function onFilmClick(e) {
     showFilmInfo(e);
   }
 }
+
 function showFilmInfo(e) {
   const currentFilms = JSON.parse(localStorage.getItem('MoviesCollection')).results;
   currentFilms.map(item => {
-    // console.log(genresTextArray(item.genre_ids));
+  
     if (e.target.id === String(item.id)) {
       localStorage.setItem('currentFilm', JSON.stringify(item));
       modalUI.insertAdjacentHTML(
@@ -60,6 +72,7 @@ function showFilmInfo(e) {
       );
     }
   });
+
   const modalWatchedButton = document.querySelector('.modal__watched');
   const currentFilm = JSON.parse(localStorage.getItem('currentFilm'));
   const watchedFilms = JSON.parse(localStorage.getItem('watched')) || [];
@@ -93,3 +106,6 @@ function toggleText(e) {
     document.querySelector('.modal__watched').innerText = 'ADD TO WATCHED';
   }
 }
+
+}
+
