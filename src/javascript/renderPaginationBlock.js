@@ -2,7 +2,7 @@ import Pagination from 'tui-pagination';
 import { fetchMovies, onSubmitForm } from './fetchMovies';
 
 
-const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
+//const totalItemsParse = JSON.parse(localStorage.getItem("MoviesCollection"))
 // const totalItems = totalItemsParse.total_results;
 
 
