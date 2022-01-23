@@ -89,22 +89,38 @@
 }
 
 .film__genre {
+  display: inline-block;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 16px;
-
+  margin-top: 2px;
   color: $main-accent-color;
 }
 .film__year {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 16px;
 
   color: $main-accent-color;
+}
+
+.film__rating {
+  display: inline-block;
+  text-align: center;
+  min-width: 30px;
+  height: 14px;
+  background-color: $library-accent-color;
+  border-radius: 5px;
+  color: $main-light-color;
+  margin-left: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11.5px;
+  line-height: 14px;
 }
 
 .back_to_top {
