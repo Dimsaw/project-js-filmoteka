@@ -80,11 +80,10 @@ function showFilmInfo(e) {
   localStorage.setItem('watched', JSON.stringify(watchedFilms));
 
   if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
-    document.querySelector('.modal__watched').innerText = 'DELETE FROM WATCHED';
-  } else {
-    document.querySelector('.modal__watched').innerText = 'ADD TO WATCHED';
+    toggleText();
   }
 
+  toggleText();
   modalWatchedButton.addEventListener('click', onClickWatchedButton);
 }
 
@@ -100,10 +99,8 @@ function onClickWatchedButton(e) {
       'watched',
       JSON.stringify(watchedFilms.filter(watchedFilm => watchedFilm.id !== currentFilm.id)),
     );
-    document.querySelector('.modal__watched').innerText == 'ADD TO WATCHED';
     return;
   }
-  document.querySelector('.modal__watched').innerText = 'DELETE FROM WATCHED';
   watchedFilms.push(currentFilm);
 
   localStorage.setItem('watched', JSON.stringify(watchedFilms));
@@ -111,7 +108,7 @@ function onClickWatchedButton(e) {
 
 function toggleText(e) {
   if (document.querySelector('.modal__watched').innerText == 'ADD TO WATCHED') {
-    document.querySelector('.modal__watched').innerText = 'Delete from watched';
+    document.querySelector('.modal__watched').innerText = 'DELETE FROM WATCHED';
   } else {
     document.querySelector('.modal__watched').innerText = 'ADD TO WATCHED';
   }
