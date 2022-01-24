@@ -14,6 +14,12 @@ try {
   const genres = movieApiService.fetchGenres();
   genres.then(genre => localStorage.setItem("genres", JSON.stringify(genre)));
   fetchMovies();
+  if (!localStorage.getItem("queue")) {
+    localStorage.setItem("queue", 0)
+  }
+  if (!localStorage.getItem("watched")) {
+    localStorage.setItem("watched", 0);
+  }
 } catch (error) {
   console.log(error);
 }
