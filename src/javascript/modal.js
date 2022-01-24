@@ -1,4 +1,10 @@
 import { genresTextArray } from './markup';
+import {
+  onClickWatchedButton,
+  onClickQueueButton,
+  toggleTextWatched,
+  toggleTextQueue,
+} from './watched-queue';
 import { toggleOverflow } from './modal-team';
 
 const modalCloseBtn = document.querySelector('[data-modal-close]');
@@ -65,46 +71,33 @@ function showFilmInfo(e) {
               <span>ABOUT</span>
               <p class="modal-overview">${item.overview}</p>
               <ul class="buttons-list">
-                <li><button type="submit" class="btn-modal modal__watched"></button></li>
-                <li><button type="submit" class="btn-modal">ADD TO QUEUE</button></li>
+                <li><button type="submit"  class="btn-modal modal__watched"></button></li>
+                <li><button type="submit" class="btn-modal modal__queue"></button></li>
               </ul>
             </div>`,
       );
     }
   });
 
-  const modalWatchedButton = document.querySelector('.modal__watched');
-  const currentFilm = JSON.parse(localStorage.getItem('currentFilm'));
-  const watchedFilms = JSON.parse(localStorage.getItem('watched')) || [];
-  localStorage.setItem('watched', JSON.stringify(watchedFilms));
-  if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
-    toggleText();
-  }
-  toggleText();
-  modalWatchedButton.addEventListener('click', onClickWatchedButton);
-}
 
-function onClickWatchedButton(e) {
-  console.log('click Watched Button');
-  toggleText();
+  const modalQueueButton = document.querySelector('.modal__queue');
+  const modalWatchedButton = document.querySelector('.modal__watched');
+
   const currentFilm = JSON.parse(localStorage.getItem('currentFilm'));
   const watchedFilms = JSON.parse(localStorage.getItem('watched')) || [];
-  if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
-    localStorage.setItem(
-      'watched',
-      JSON.stringify(watchedFilms.filter(watchedFilm => watchedFilm.id !== currentFilm.id)),
-    );
-    return;
-  }
-  watchedFilms.push(currentFilm);
+  const queueFilms = JSON.parse(localStorage.getItem('queue')) || [];
   localStorage.setItem('watched', JSON.stringify(watchedFilms));
-}
-function toggleText(e) {
-  if (document.querySelector('.modal__watched').innerText == 'ADD TO WATCHED') {
-    document.querySelector('.modal__watched').innerText = 'DELETE FROM WATCHED';
-  } else {
-    document.querySelector('.modal__watched').innerText = 'ADD TO WATCHED';
+  localStorage.setItem('queue', JSON.stringify(queueFilms));
+  if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
+    toggleTextWatched();
   }
+  if (queueFilms.find(queueFilm => queueFilm.id === currentFilm.id)) {
+    toggleTextQueue();
+  }
+  toggleTextWatched();
+  toggleTextQueue();
+  modalWatchedButton.addEventListener('click', onClickWatchedButton);
+  modalQueueButton.addEventListener('click', onClickQueueButton);
 }
 
 
