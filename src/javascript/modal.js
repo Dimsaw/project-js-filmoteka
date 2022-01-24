@@ -14,7 +14,6 @@ const filmsContainer = document.querySelector('.films__list');
 const modalUI = document.querySelector('.modalUI');
 const body = document.querySelector('body');
 
-
 filmsContainer.addEventListener('click', onFilmClick);
 modalCloseBtn.addEventListener('click', toggleModal);
 // modalOpenBtn.addEventListener('click', toggleOverflow);
@@ -22,8 +21,6 @@ modalCloseBtn.addEventListener('click', toggleModal);
 function toggleModal() {
   modal.classList.toggle('is-hidden');
   toggleOverflow();
-
-
 }
 function onFilmClick(e) {
   if (e.target.nodeName !== 'IMG') {
@@ -38,7 +35,6 @@ function onFilmClick(e) {
 function showFilmInfo(e) {
   const currentFilms = JSON.parse(localStorage.getItem('MoviesCollection')).results;
   currentFilms.map(item => {
-  
     if (e.target.id === String(item.id)) {
       localStorage.setItem('currentFilm', JSON.stringify(item));
       modalUI.insertAdjacentHTML(
@@ -79,7 +75,6 @@ function showFilmInfo(e) {
     }
   });
 
-
   const modalQueueButton = document.querySelector('.modal__queue');
   const modalWatchedButton = document.querySelector('.modal__watched');
 
@@ -90,15 +85,14 @@ function showFilmInfo(e) {
   localStorage.setItem('queue', JSON.stringify(queueFilms));
   if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
     toggleTextWatched();
+    modalWatchedButton.classList.add('modal__watched--aktiv');
   }
   if (queueFilms.find(queueFilm => queueFilm.id === currentFilm.id)) {
     toggleTextQueue();
+    modalQueueButton.classList.add('modal__queue--aktiv');
   }
   toggleTextWatched();
   toggleTextQueue();
   modalWatchedButton.addEventListener('click', onClickWatchedButton);
   modalQueueButton.addEventListener('click', onClickQueueButton);
 }
-
-
-

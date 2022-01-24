@@ -1,6 +1,8 @@
 function onClickWatchedButton(e) {
-  console.log('click Watched Button');
+  // console.log('click Watched Button');
   toggleTextWatched();
+  const modalWatchedButton = document.querySelector('.modal__watched');
+  modalWatchedButton.classList.toggle('modal__watched--aktiv');
   const currentFilm = JSON.parse(localStorage.getItem('currentFilm'));
   const watchedFilms = JSON.parse(localStorage.getItem('watched')) || [];
   if (watchedFilms.find(watchedFilm => watchedFilm.id === currentFilm.id)) {
@@ -15,8 +17,10 @@ function onClickWatchedButton(e) {
 }
 
 function onClickQueueButton(e) {
-  console.log('click QUEUE Button');
+  // console.log('click QUEUE Button');
   toggleTextQueue();
+  const modalQueueButton = document.querySelector('.modal__queue');
+  modalQueueButton.classList.toggle('modal__queue--aktiv');
   const currentFilm = JSON.parse(localStorage.getItem('currentFilm'));
   const queueFilms = JSON.parse(localStorage.getItem('queue')) || [];
   if (queueFilms.find(queueFilm => queueFilm.id === currentFilm.id)) {
