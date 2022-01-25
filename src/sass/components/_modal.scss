@@ -1,216 +1,216 @@
-
 $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
 
-.backdrop{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-
-    opacity: 1;
-    transition: opacity 250ms $timing-function;
-    z-index: 200;
+  opacity: 1;
+  transition: opacity 250ms $timing-function;
+  z-index: 200;
 }
 
-.backdrop.is-hidden{
-    opacity: 0;
-    pointer-events: none;
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.modal{
-    position: absolute;
-    z-index: 300;
-    top: 50%;
-    left: 50%;
-    width: 280px;
-    height: 90%;
-    padding: 60px 20px;
+.modal {
+  position: absolute;
+  z-index: 300;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 90%;
+  padding: 60px 20px;
 
-    background-color: $main-light-color;
-    overflow-y: auto;
+  background-color: $main-light-color;
+  overflow-y: auto;
 
-    font-family: $main-font-family;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    color: $main-dark-color;
+  font-family: $main-font-family;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: $main-dark-color;
 
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 250ms $timing-function;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms $timing-function;
 
-    @media screen and (min-width: 768px) {
-        width: 618px;
-        height: 80%;
-        padding: 40px 28px;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    @media screen and (min-width: 1024px) {
-        width: 882px;
-        padding: 50px 30px 40px 30px;
-    }
-}
-
-.modalUI{
+  @media screen and (min-width: 768px) {
+    width: 618px;
+    height: 80%;
+    padding: 40px 28px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+  }
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-    }
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+    padding: 50px 30px 40px 30px;
+  }
 }
 
-.backdrop.is-hidden .modal{
-    transform: translate(-50%, -50%) scale(0.7);
-}
+.modalUI {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-.btn-close{
-    position: absolute;
-    z-index: 20;
-    transform: translate(215px, -45px);
-
-    width: 30px;
-    height: 30px;
-    font-size: 24px;
-    font-weight: 200;
-
-    border: none;
-    background-color: $main-light-color;
-    cursor: pointer;
-
-    transition: color 250ms $timing-function;
-
-    &:hover,
-    &:focus{
-        color: $main-accent-color;
-    }
-
-    @media screen and (min-width: 768px) {
-        transform: translate(550px, -30px);
-    }
-
-    @media screen and (min-width: 1024px){
-        transform: translate(810px, -35px);
-    }
-}
-
-.film-preview-img{
-    width: 240px;
-    height: 356px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-
-    @media screen and (min-width: 768px) {
-        width: 264px;
-        height: 374px;
-        margin-right: 30px;
-        margin-bottom: 0;
-    }
-
-    @media screen and (min-width: 1024px) {
-        width: 396px;
-        height: 478px;
-    }
-}
-
-.h1{
-    margin: 0;
-    font-size: 20px;
-    line-height: 23px;
-    text-transform: uppercase;
-
-    @media screen and (min-width: 1024px) {
-        font-size: 30px;
-    }
-}
-
-.table-info{
-    margin: 20px 0 20px 0;
-}
-
-.modal-info{
-    width: 110px;
-    height: 25px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: $modal-title-color;
-    line-height: 1.3;
-
-    @media screen and (min-width: 1024px) {
-        width: 160px;
-    }
-}
-
-.vote-modal{
-    background: $main-accent-color;
-    border-radius: 5px;
-    padding: 1px 8px;
-    color: $main-light-color;
-}
-
-.votes-modal{
-    background: rgba($color: $main-dark-color, $alpha: 0.05);
-    border-radius: 5px;
-    padding: 1px 5px;
-}
-
-.modal-overview{
-    font-weight: 500;
-    padding-bottom: 26px;
-}
-
-.buttons-list{
+  @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
 
-    @media screen and (min-width: 1024px) {
-        justify-content: flex-start;
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.7);
+}
 
-    }
+.btn-close {
+  position: absolute;
+  z-index: 20;
+  transform: translate(215px, -45px);
+
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  font-weight: 200;
+
+  border: none;
+  background-color: $main-light-color;
+  cursor: pointer;
+
+  transition: color 250ms $timing-function;
+
+  &:hover,
+  &:focus {
+    color: $main-accent-color;
+  }
+
+  @media screen and (min-width: 768px) {
+    transform: translate(550px, -30px);
+  }
+
+  @media screen and (min-width: 1024px) {
+    transform: translate(810px, -35px);
+  }
+}
+
+.film-preview-img {
+  width: 240px;
+  height: 356px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    height: 374px;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 396px;
+    height: 478px;
+  }
+}
+
+.h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+  }
+}
+
+.table-info {
+  margin: 20px 0 20px 0;
+}
+
+.modal-info {
+  width: 110px;
+  height: 25px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: $modal-title-color;
+  line-height: 1.3;
+
+  @media screen and (min-width: 1024px) {
+    width: 160px;
+  }
+}
+
+.vote-modal {
+  background: $main-accent-color;
+  border-radius: 5px;
+  padding: 1px 8px;
+  color: $main-light-color;
+}
+
+.votes-modal {
+  background: rgba($color: $main-dark-color, $alpha: 0.05);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.modal-overview {
+  font-weight: 500;
+  padding-bottom: 26px;
+}
+
+.buttons-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (min-width: 1024px) {
+    justify-content: flex-start;
+  }
 }
 
 .buttons-list > li:not(last-child) {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
-.btn-modal{
-    width: 112px;
-    height: 44px;
-    font-weight: 500;
-    background: $main-light-color;
-    font-size: 12px;
-    line-height: 16px;
-    border-radius: 5px;
-    border: 1px solid $main-dark-color;
+.btn-modal {
+  width: 112px;
+  height: 44px;
+  font-weight: 500;
+  background: $main-light-color;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 5px;
+  border: 1px solid $main-dark-color;
 
-    @media screen and (min-width: 768px) {
-        width: 125px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
 
-    @media screen and (min-width: 1024px) {
-        width: 136px;
-    }
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
 }
 
 .btn-modal:hover,
-.btn-modal:focus{
-    background: $main-accent-color;
-    color: $main-light-color;
-    border: none;
+.btn-modal:focus {
+  background: $main-accent-color;
+  color: $main-light-color;
+  border: none;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
-
-
-
+.modal__watched--aktiv,
+.modal__queue--aktiv {
+  color: $main-light-color;
+  background: $main-accent-color;
+  border: none;
+}
