@@ -38,7 +38,8 @@ function showFilmInfo(e) {
     if (e.target.id === String(item.id)) {
       localStorage.setItem('currentFilm', JSON.stringify(item));
       if (item.poster_path == null) {
-        modalUI.innerHTML = 
+        modalUI.insertAdjacentHTML(
+          'afterbegin',
           `<img src="${NoPosterImage}" width="100%" height="100%" alt="" class="film-preview-img" />
             <div>
               <h1 class="h1">${item.title}</h1>
@@ -68,10 +69,11 @@ function showFilmInfo(e) {
                 <li><button type="submit" class="btn-modal modal__queue"></button></li>
               </ul>
             </div>`
-        ;
+        );
         return
       }
-      modalUI.innerHTML = 
+      modalUI.insertAdjacentHTML(
+        'afterbegin',
         `<img src="https://image.tmdb.org/t/p/w500${
           item.poster_path
         }" width="100%" height="100%" alt="" class="film-preview-img" />
@@ -104,7 +106,7 @@ function showFilmInfo(e) {
                 <li><button type="submit" class="btn-modal modal__queue"></button></li>
               </ul>
             </div>`
-      ;
+      );
     }
   });
 
