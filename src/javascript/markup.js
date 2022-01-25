@@ -58,7 +58,7 @@ function renderLibraryMarkup(array) {
                     <p class="film__title">${title}</p>
                     <span class="film__genre">${genres}</span>
                     <span class="film__year">| ${year}</span>
-                    <span class="film__rating">${vote_average}</span>
+                    <span class="film__rating">${addLeadingZero(vote_average)}</span>
                   </div>
                 </div>
               </li>`;
@@ -66,6 +66,10 @@ function renderLibraryMarkup(array) {
     .join('');
 
   document.querySelector('.films__list').innerHTML = libraryMarkup;
+}
+
+function addLeadingZero(value) {
+  return String(value).padEnd(3, '.0');
 }
 
 function genresTextArray(genresArray) {
