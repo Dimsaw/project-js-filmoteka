@@ -9,5 +9,6 @@ import './javascript/preloader';
 import './javascript/scrollToTop';
 import './javascript/modal';
 import './javascript/modal-team';
+import './javascript/renderLibraryPagination';
 
 
