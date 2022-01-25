@@ -6,6 +6,10 @@
     user-select: none;
 }
 
+.pagination-container {
+    margin-bottom: 60px;
+}
+
 .tui-ico-ellipsis,
 .tui-ico-first,
 .tui-ico-last,
@@ -15,8 +19,6 @@
 }
 
 .tui-pagination {
-    height: 28px;
-    margin-bottom: 72px;
     line-height: normal;
     text-align: center;
     font-size: 0;

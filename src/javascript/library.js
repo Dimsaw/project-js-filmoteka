@@ -31,7 +31,8 @@ home.addEventListener('click', onAddHomePage);
   // ==========================================================
   const btnQueue = document.querySelector('.js-btn-queue');
   const btnWatched = document.querySelector('.js-btn-watched');
-  paginationBlock.classList.add('js-hidden');
+   paginationBlock.classList.add('js-hidden');
+   document.querySelector('.notFound-block').classList.add('js-hidden');
   const queue =  JSON.parse(localStorage.getItem("queue"));
   const watched =  JSON.parse(localStorage.getItem("watched"));
   btnQueue.classList.add("js-btn-active");
