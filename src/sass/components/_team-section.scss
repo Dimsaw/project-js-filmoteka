@@ -32,24 +32,31 @@
 }
 
 .team-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 80px 20px;
-  max-width: 768px;
-
-  height: 95vh;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-y: auto;
 }
 
 .team-list {
   display: flex;
-  justify-content: space-around;
-
   flex-wrap: wrap;
+  justify-content: center;
+  width: 768px;
 
   &__member {
     display: block;
-    margin: 20px;
+    margin: 20.5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 512px;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 256px;
   }
 }
 
@@ -70,6 +77,8 @@
   align-items: center;
   margin-bottom: 30px;
   max-width: 200px;
+  width: 215px;
+  transition: transform 500ms ease-in;
 
   &__photo {
     display: block;
