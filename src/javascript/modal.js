@@ -47,9 +47,9 @@ function showFilmInfo(e) {
               <table class="table-info">
                 <tr>
                   <td class="modal-info">Vote / Votes</td>
-                  <td><span class="vote-modal">${
-                    item.vote_average
-                  }</span> / <span class="votes-modal">${item.vote_count}</span></td>
+                  <td><span class="vote-modal">${addLeadingZero(
+                    item.vote_average,
+                  )}</span> / <span class="votes-modal">${item.vote_count}</span></td>
                 </tr>
                 <tr>
                   <td class="modal-info">Popularity</td>
@@ -95,4 +95,8 @@ function showFilmInfo(e) {
   toggleTextQueue();
   modalWatchedButton.addEventListener('click', onClickWatchedButton);
   modalQueueButton.addEventListener('click', onClickQueueButton);
+}
+
+function addLeadingZero(value) {
+  return String(value).padEnd(3, '.0');
 }
