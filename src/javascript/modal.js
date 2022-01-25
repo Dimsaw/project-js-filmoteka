@@ -1,4 +1,4 @@
-import { genresTextArray } from './markup';
+import { genresTextArray, NoPosterImage } from './markup';
 import {
   onClickWatchedButton,
   onClickQueueButton,
@@ -37,8 +37,41 @@ function showFilmInfo(e) {
   currentFilms.map(item => {
     if (e.target.id === String(item.id)) {
       localStorage.setItem('currentFilm', JSON.stringify(item));
-      modalUI.insertAdjacentHTML(
-        'afterbegin',
+      if (item.poster_path == null) {
+        modalUI.innerHTML = 
+          `<img src="${NoPosterImage}" width="100%" height="100%" alt="" class="film-preview-img" />
+            <div>
+              <h1 class="h1">${item.title}</h1>
+              <table class="table-info">
+                <tr>
+                  <td class="modal-info">Vote / Votes</td>
+                  <td><span class="vote-modal">${item.vote_average
+          }</span> / <span class="votes-modal">${item.vote_count}</span></td>
+                </tr>
+                <tr>
+                  <td class="modal-info">Popularity</td>
+                  <td>${item.popularity.toFixed(1)}</td>
+                </tr>
+                <tr>
+                  <td class="modal-info">Original Title</td>
+                  <td>${item.title.toUpperCase()}</td>
+                </tr>
+                <tr>
+                  <td class="modal-info">Genre</td>
+                  <td>${genresTextArray(item.genre_ids)}</td>
+                </tr>
+              </table>
+              <span>ABOUT</span>
+              <p class="modal-overview">${item.overview}</p>
+              <ul class="buttons-list">
+                <li><button type="submit"  class="btn-modal modal__watched"></button></li>
+                <li><button type="submit" class="btn-modal modal__queue"></button></li>
+              </ul>
+            </div>`
+        ;
+        return
+      }
+      modalUI.innerHTML = 
         `<img src="https://image.tmdb.org/t/p/w500${
           item.poster_path
         }" width="100%" height="100%" alt="" class="film-preview-img" />
@@ -70,8 +103,8 @@ function showFilmInfo(e) {
                 <li><button type="submit"  class="btn-modal modal__watched"></button></li>
                 <li><button type="submit" class="btn-modal modal__queue"></button></li>
               </ul>
-            </div>`,
-      );
+            </div>`
+      ;
     }
   });
 
