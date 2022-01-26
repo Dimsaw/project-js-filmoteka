@@ -97,6 +97,11 @@ home.addEventListener('click', onAddHomePage);
      }
       
      searchMoviesForLibrary(currentButton, queue)
+    //  if (btnWatched.classList.contains("js-btn-active")) {
+       libraryPagination.on('afterMove', ({ page }) => {
+          searchMoviesForLibrary(page, queue)
+        })
+      // }
     
     return;
      
@@ -114,6 +119,9 @@ home.addEventListener('click', onAddHomePage);
      }
       
      searchMoviesForLibrary(currentButton, watched)
+     libraryPagination.on('afterMove', ({ page }) => {
+          searchMoviesForLibrary(page, watched)
+        })
      
     return;
      
