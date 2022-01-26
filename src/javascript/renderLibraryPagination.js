@@ -42,4 +42,12 @@ function searchMoviesForLibrary(page, library) {
   renderLibraryMarkup(movies);
 }
 
-export { libraryPagination, searchMoviesForLibrary };
+function returnQueue() {
+  return JSON.parse(localStorage.getItem('queue'))
+};
+
+function returnWatched() {
+  return JSON.parse(localStorage.getItem('watched'))
+}
+
+export { libraryPagination, searchMoviesForLibrary, returnQueue, returnWatched };

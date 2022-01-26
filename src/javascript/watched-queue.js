@@ -1,5 +1,5 @@
 import { renderLibraryMarkup } from "./markup";
-import { libraryPagination, searchMoviesForLibrary } from "./renderLibraryPagination";
+import { libraryPagination, searchMoviesForLibrary, returnQueue, returnWatched } from "./renderLibraryPagination";
 
 
 function onClickWatchedButton(e) {
@@ -62,8 +62,10 @@ function refreshWatchedMarkup() {
   const MyLibraryIsActive = document.querySelector('.page-library');
   const btnWatched = document.querySelector('.js-btn-watched');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
-    const currentPage = libraryPagination.
-    renderLibraryMarkup(JSON.parse(localStorage.getItem('watched')));
+    const currentPage = libraryPagination.getCurrentPage();
+    const watched = JSON.parse(localStorage.getItem('watched'));
+    // libraryPagination.reset(watched.length);
+    searchMoviesForLibrary(currentPage, watched);
     return
   };
   
@@ -75,7 +77,10 @@ function refreshQueueMarkup() {
   const MyLibraryIsActive = document.querySelector('.page-library');
   const btnQueue = document.querySelector('.js-btn-queue');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnQueue.classList.contains('js-btn-active')) {
-    renderLibraryMarkup(JSON.parse(localStorage.getItem('queue')));
+    const currentPage = libraryPagination.getCurrentPage();
+    const queue = JSON.parse(localStorage.getItem('queue'));
+    // libraryPagination.reset(queue.length);
+    searchMoviesForLibrary(currentPage, queue);
     return
   };
  

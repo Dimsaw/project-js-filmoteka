@@ -96,7 +96,7 @@ home.addEventListener('click', onAddHomePage);
     btnWatched.classList.remove("js-btn-active");
      libraryPaginationBlock.classList.remove("js-hidden");
      
-     libraryPagination.movePageTo(1)
+    //  libraryPagination.movePageTo(1)
 
      const currentButton = libraryPagination.getCurrentPage()
 
@@ -116,7 +116,7 @@ home.addEventListener('click', onAddHomePage);
     btnQueue.classList.remove("js-btn-active");
     libraryPaginationBlock.classList.remove("js-hidden");
      
-    libraryPagination.movePageTo(1)
+    // libraryPagination.movePageTo(1)
 
      const currentButton = libraryPagination.getCurrentPage()
      
