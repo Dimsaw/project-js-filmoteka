@@ -8,11 +8,10 @@ import {
 import { toggleOverflow } from './modal-team';
 
 const modalCloseBtn = document.querySelector('[data-modal-close]');
-const modalOpenBtn = document.querySelector('[data-modal-open]');
 const modal = document.querySelector('[data-modal]');
 const filmsContainer = document.querySelector('.films__list');
 const modalUI = document.querySelector('.modalUI');
-const body = document.querySelector('body');
+// const body = document.querySelector('body');
 
 filmsContainer.addEventListener('click', onFilmClick);
 modalCloseBtn.addEventListener('click', toggleModal);
@@ -45,7 +44,21 @@ document.addEventListener("keydown", e => {
 });
 
 function showFilmInfo(e) {
-  const currentFilms = JSON.parse(localStorage.getItem('MoviesCollection')).results;
+  const btnWatched = document.querySelector('.buttons');
+  const btnArray = btnWatched.children;
+  let currentFilms;
+
+  if(btnArray.length > 0 && btnArray[0].classList.value === 'js-btn-watched js-btn-active'){
+    currentFilms = JSON.parse(localStorage.getItem('watched'));
+  } 
+  else if(btnArray.length > 0 && btnArray[1].classList.value === 'js-btn-queue js-btn-active'){
+    currentFilms = JSON.parse(localStorage.getItem('queue'));
+  }
+  else {
+    currentFilms = JSON.parse(localStorage.getItem('MoviesCollection')).results;
+  }
+
+  
   currentFilms.map(item => {
     if (e.target.id === String(item.id)) {
       localStorage.setItem('currentFilm', JSON.stringify(item));
@@ -85,17 +98,13 @@ function showFilmInfo(e) {
       }
       modalUI.insertAdjacentHTML(
         'afterbegin',
-        `<img src="https://image.tmdb.org/t/p/w500${
-          item.poster_path
-        }" width="100%" height="100%" alt="" class="film-preview-img" />
+        `<img src="https://image.tmdb.org/t/p/w500${item.poster_path}" width="100%" height="100%" alt="" class="film-preview-img" />
             <div>
               <h1 class="h1">${item.title}</h1>
               <table class="table-info">
                 <tr>
                   <td class="modal-info">Vote / Votes</td>
-                  <td><span class="vote-modal">${addLeadingZero(
-                    item.vote_average,
-                  )}</span> / <span class="votes-modal">${item.vote_count}</span></td>
+                  <td><span class="vote-modal">${addLeadingZero(item.vote_average,)}</span> / <span class="votes-modal">${item.vote_count}</span></td>
                 </tr>
                 <tr>
                   <td class="modal-info">Popularity</td>
@@ -122,6 +131,8 @@ function showFilmInfo(e) {
 
     toggleOverflow();
   });
+
+
 
   const modalQueueButton = document.querySelector('.modal__queue');
   const modalWatchedButton = document.querySelector('.modal__watched');
