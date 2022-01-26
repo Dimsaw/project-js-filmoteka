@@ -105,4 +105,14 @@ function genresTextArray(genresArray) {
   return genresName.slice(0, 3).join(', ');
 }
 
-export { renderHomeMarkup, renderLibraryMarkup, genresTextArray, NoPosterImage };
+function genresTextArrayFull(genresArray) {
+  const savedGenres = localStorage.getItem('genres');
+  const parseGenres = JSON.parse(savedGenres);
+  const genresName = genresArray.map(genreId => {
+    return parseGenres.find(genreObject => genreObject.id === genreId).name;
+  });
+  
+  return genresName.join(', ');
+}
+
+export { renderHomeMarkup, renderLibraryMarkup, genresTextArrayFull, NoPosterImage };
