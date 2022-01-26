@@ -30,16 +30,79 @@ const libraryPaginationOptions = {
 
 const libraryPagination = new Pagination('library-pagination', libraryPaginationOptions);
 
-function searchMoviesForLibrary(page, library) {
-  let movies = [];
-  let indexElement = 9 * (page-1);
-  library.filter((element, index) => {
-    if ((index + 1 <= 9 * page) && (index + 1 > indexElement)) {
-      movies.push(element);
-    }
-  })
+window.addEventListener("resize", function() {
+  if (window.matchMedia("(max-width: 768px - 1)").matches) {
+    console.log(libraryPaginationOptions.itemsPerPage);
+    libraryPagination.setItemsPerPage(4);
+    console.log(libraryPaginationOptions.itemsPerPage);
+    return
+  }
 
-  renderLibraryMarkup(movies);
+  if (window.matchMedia("(max-width: 1024px - 1)").matches) {
+    console.log(libraryPaginationOptions.itemsPerPage);
+    libraryPagination.setItemsPerPage(8);
+    console.log(libraryPaginationOptions.itemsPerPage);
+    return
+  }
+
+  // if (window.matchMedia("(min-width: 1024)").matches) {
+    console.log(libraryPaginationOptions.itemsPerPage);
+    libraryPagination.setItemsPerPage(9);
+    console.log(libraryPaginationOptions.itemsPerPage);
+  //   return
+  // }
+
+});
+
+function searchMoviesForLibrary(page, library) {
+  window.addEventListener("resize", function() {
+    if (window.matchMedia("max-width: 767px").matches) {
+      let movies = [];
+      let indexElement = 4 * (page-1);
+      library.filter((element, index) => {
+        if ((index + 1 <= 4 * page) && (index + 1 > indexElement)) {
+          movies.push(element);
+        }
+      })
+
+      renderLibraryMarkup(movies);
+      return
+    }
+
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      let movies = [];
+      let indexElement = 8 * (page-1);
+      library.filter((element, index) => {
+        if ((index + 1 <= 8 * page) && (index + 1 > indexElement)) {
+          movies.push(element);
+        }
+      })
+
+      renderLibraryMarkup(movies);
+      return
+    }
+
+    // if (window.matchMedia("(min-width: 1024)").matches) {
+      let movies = [];
+      let indexElement = 9 * (page-1);
+      library.filter((element, index) => {
+        if ((index + 1 <= 9 * page) && (index + 1 > indexElement)) {
+          movies.push(element);
+        }
+      })
+      renderLibraryMarkup(movies);
+      // return
+    // }
+});
+  // let movies = [];
+  // let indexElement = 9 * (page-1);
+  // library.filter((element, index) => {
+  //   if ((index + 1 <= 9 * page) && (index + 1 > indexElement)) {
+  //     movies.push(element);
+  //   }
+  // })
+
+  // renderLibraryMarkup(movies);
 }
 
 function returnQueue() {

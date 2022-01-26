@@ -1,4 +1,3 @@
-import { renderLibraryMarkup } from "./markup";
 import { libraryPagination, searchMoviesForLibrary, returnQueue, returnWatched } from "./renderLibraryPagination";
 
 
@@ -63,9 +62,7 @@ function refreshWatchedMarkup() {
   const btnWatched = document.querySelector('.js-btn-watched');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
     const currentPage = libraryPagination.getCurrentPage();
-    const watched = JSON.parse(localStorage.getItem('watched'));
-    // libraryPagination.reset(watched.length);
-    searchMoviesForLibrary(currentPage, watched);
+    searchMoviesForLibrary(currentPage, returnWatched());
     return
   };
   
@@ -78,9 +75,7 @@ function refreshQueueMarkup() {
   const btnQueue = document.querySelector('.js-btn-queue');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnQueue.classList.contains('js-btn-active')) {
     const currentPage = libraryPagination.getCurrentPage();
-    const queue = JSON.parse(localStorage.getItem('queue'));
-    // libraryPagination.reset(queue.length);
-    searchMoviesForLibrary(currentPage, queue);
+    searchMoviesForLibrary(currentPage, returnQueue());
     return
   };
  

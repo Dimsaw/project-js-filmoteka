@@ -1,8 +1,7 @@
 // import images from '..';
 
 // =============================
-import { renderLibraryMarkup } from "./markup";
-import { libraryPagination, searchMoviesForLibrary } from "./renderLibraryPagination";
+import { libraryPagination, searchMoviesForLibrary, returnQueue, returnWatched } from "./renderLibraryPagination";
 
 const libraryBody = document.querySelector(".films__list");
 const paginationBlock = document.getElementById("pagination");
@@ -35,8 +34,6 @@ home.addEventListener('click', onAddHomePage);
   const btnWatched = document.querySelector('.js-btn-watched');
   paginationBlock.classList.add('js-hidden');
   document.querySelector('.notFound-block').classList.add('js-hidden');
-  const queue =  JSON.parse(localStorage.getItem("queue"));
-  const watched =  JSON.parse(localStorage.getItem("watched"));
   btnQueue.classList.add("js-btn-active");
    
   libraryPagination.movePageTo(1)
@@ -45,21 +42,18 @@ home.addEventListener('click', onAddHomePage);
     btnQueue.classList.add("js-btn-active");
     btnWatched.classList.remove("js-btn-active");
     messageLibrary.innerHTML = "";
-    if (queue == 0) {
+    if (returnQueue() == 0) {
       libraryBody.innerHTML = "";
       messageLibrary.innerHTML = "queue is empty";
       return
     }
 
-    // renderLibraryMarkup(JSON.parse(localStorage.getItem("queue")));
-
-
     libraryPagination.movePageTo(1)
-    libraryPagination.reset(queue.length)
-    searchMoviesForLibrary(1, queue);
+    libraryPagination.reset(returnQueue().length)
+    searchMoviesForLibrary(1, returnQueue());
     if (btnQueue.classList.contains("js-btn-active")) {
        libraryPagination.on('afterMove', ({ page }) => {
-          searchMoviesForLibrary(page, queue)
+          searchMoviesForLibrary(page, returnQueue())
         })
       }
 
@@ -70,63 +64,60 @@ home.addEventListener('click', onAddHomePage);
     btnQueue.classList.remove("js-btn-active");
     messageLibrary.innerHTML = "";
 
-    if (watched == 0) {
+    if (returnWatched() == 0) {
       libraryBody.innerHTML = "";
       messageLibrary.innerHTML = "watched films is empty";
       return
     }
 
-    // renderLibraryMarkup(JSON.parse(localStorage.getItem("watched")));
-
-
     libraryPagination.movePageTo(1)
-    libraryPagination.reset(watched.length)
-    searchMoviesForLibrary(1, watched);
+    libraryPagination.reset(returnWatched().length)
+    searchMoviesForLibrary(1, returnWatched());
     if (btnWatched.classList.contains("js-btn-active")) {
        libraryPagination.on('afterMove', ({ page }) => {
-          searchMoviesForLibrary(page, watched)
+          searchMoviesForLibrary(page, returnWatched())
         })
       }
 
   })
   
   // ==========================================================
-   if (queue != 0) {
+   if (returnQueue() != 0) {
     btnQueue.classList.add("js-btn-active");
     btnWatched.classList.remove("js-btn-active");
      libraryPaginationBlock.classList.remove("js-hidden");
      
-    //  libraryPagination.movePageTo(1)
+     libraryPagination.movePageTo(1)
 
      const currentButton = libraryPagination.getCurrentPage()
 
      if (currentButton === 1) {
-       libraryPagination.reset(queue.length)
+       libraryPagination.reset(returnQueue().length)
      }
       
-     searchMoviesForLibrary(currentButton, queue)
+     searchMoviesForLibrary(currentButton, returnQueue())
        libraryPagination.on('afterMove', ({ page }) => {
-          searchMoviesForLibrary(page, queue)
+          searchMoviesForLibrary(page, returnQueue())
         })
     
     return;
      
-   } else if (watched != 0) {
+   } else if (returnWatched() != 0) {
     btnWatched.classList.add("js-btn-active");
     btnQueue.classList.remove("js-btn-active");
     libraryPaginationBlock.classList.remove("js-hidden");
      
-    // libraryPagination.movePageTo(1)
+    libraryPagination.movePageTo(1)
 
      const currentButton = libraryPagination.getCurrentPage()
      
      if (currentButton === 1) {
-       libraryPagination.reset(watched.length)
+       libraryPagination.reset(returnWatched().length)
      }
       
-     searchMoviesForLibrary(currentButton, watched)
+     searchMoviesForLibrary(currentButton, returnWatched())
      libraryPagination.on('afterMove', ({ page }) => {
-          searchMoviesForLibrary(page, watched)
+          searchMoviesForLibrary(page, returnWatched())
         })
      
     return;
