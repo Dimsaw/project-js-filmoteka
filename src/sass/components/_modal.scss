@@ -206,9 +206,9 @@ $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 .btn-modal:hover,
 .btn-modal:focus {
-  background: $main-accent-color;
-  color: $main-light-color;
-  border: none;
+  // background: $main-accent-color;
+  // color: $library-accent-color;
+  border: 2px solid $library-accent-color;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
