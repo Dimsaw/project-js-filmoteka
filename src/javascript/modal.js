@@ -1,4 +1,4 @@
-import { genresTextArray, NoPosterImage } from './markup';
+import { genresTextArrayFull, NoPosterImage } from './markup';
 import {
   onClickWatchedButton,
   onClickQueueButton,
@@ -20,7 +20,7 @@ modalCloseBtn.addEventListener('click', toggleModal);
 
 function toggleModal() {
   modal.classList.toggle('is-hidden');
-  toggleOverflow();
+  
 }
 function onFilmClick(e) {
   if (e.target.nodeName !== 'IMG') {
@@ -31,6 +31,18 @@ function onFilmClick(e) {
     showFilmInfo(e);
   }
 }
+
+document.addEventListener("click", e => {
+  if(e.target.classList.value === "backdrop"){
+      toggleModal();
+  }
+});
+
+document.addEventListener("keydown", e => {
+  if(e.code === "Escape" && modal.classList.value !== "backdrop is-hidden"){
+      toggleModal();
+  }
+});
 
 function showFilmInfo(e) {
   const currentFilms = JSON.parse(localStorage.getItem('MoviesCollection')).results;
@@ -46,8 +58,7 @@ function showFilmInfo(e) {
               <table class="table-info">
                 <tr>
                   <td class="modal-info">Vote / Votes</td>
-                  <td><span class="vote-modal">${item.vote_average
-          }</span> / <span class="votes-modal">${item.vote_count}</span></td>
+                  <td><span class="vote-modal">${item.vote_average}</span> / <span class="votes-modal">${item.vote_count}</span></td>
                 </tr>
                 <tr>
                   <td class="modal-info">Popularity</td>
@@ -59,7 +70,7 @@ function showFilmInfo(e) {
                 </tr>
                 <tr>
                   <td class="modal-info">Genre</td>
-                  <td>${genresTextArray(item.genre_ids)}</td>
+                  <td>${genresTextArrayFull(item.genre_ids)}</td>
                 </tr>
               </table>
               <span>ABOUT</span>
@@ -96,7 +107,7 @@ function showFilmInfo(e) {
                 </tr>
                 <tr>
                   <td class="modal-info">Genre</td>
-                  <td>${genresTextArray(item.genre_ids)}</td>
+                  <td>${genresTextArrayFull(item.genre_ids)}</td>
                 </tr>
               </table>
               <span>ABOUT</span>
@@ -108,6 +119,8 @@ function showFilmInfo(e) {
             </div>`
       );
     }
+
+    toggleOverflow();
   });
 
   const modalQueueButton = document.querySelector('.modal__queue');
