@@ -21,8 +21,9 @@ modalCloseBtn.addEventListener('click', toggleModal);
 
 function toggleModal() {
   modal.classList.toggle('is-hidden');
-  
+  toggleOverflow();
 }
+
 function onFilmClick(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
@@ -33,21 +34,28 @@ function onFilmClick(e) {
   }
 }
 
-document.addEventListener("click", e => {
-  if(e.target.classList.value === "backdrop"){
-      toggleModal();
-  }
-});
+document.addEventListener("click", onClickBackdrop);
 
-document.addEventListener("keydown", e => {
-  if(e.code === "Escape" && modal.classList.value !== "backdrop is-hidden"){
-      toggleModal();
+
+function onClickBackdrop (e) {
+  if(e.target.classList.value === "backdrop"){
+    toggleModal();
   }
-});
+}
+
+document.addEventListener("keydown", onClickEsc);
+
+
+function onClickEsc (e) {
+  if(e.code === "Escape" && modal.classList.value !== "backdrop is-hidden"){
+    toggleModal();
+  }
+}
+
 
 function showFilmInfo(e) {
-  const btnWatched = document.querySelector('.buttons');
-  const btnArray = btnWatched.children;
+  const btnDiv = document.querySelector('.buttons');
+  const btnArray = btnDiv.children;
   let currentFilms;
 
   if(btnArray.length > 0 && btnArray[0].classList.value === 'js-btn-watched js-btn-active'){
@@ -131,7 +139,6 @@ function showFilmInfo(e) {
       );
     }
 
-    toggleOverflow();
   });
 
 
