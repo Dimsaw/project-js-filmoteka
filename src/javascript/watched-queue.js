@@ -62,6 +62,8 @@ function refreshWatchedMarkup() {
   const btnWatched = document.querySelector('.js-btn-watched');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
     const currentPage = libraryPagination.getCurrentPage();
+    libraryPagination.reset(returnWatched().length)
+    libraryPagination.movePageTo(currentPage)
     searchMoviesForLibrary(currentPage, returnWatched());
     return
   };
@@ -75,6 +77,8 @@ function refreshQueueMarkup() {
   const btnQueue = document.querySelector('.js-btn-queue');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnQueue.classList.contains('js-btn-active')) {
     const currentPage = libraryPagination.getCurrentPage();
+    libraryPagination.reset(returnQueue().length)
+    libraryPagination.movePageTo(currentPage)
     searchMoviesForLibrary(currentPage, returnQueue());
     return
   };
