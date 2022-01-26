@@ -1,3 +1,6 @@
+import { renderLibraryMarkup } from "./markup";
+
+
 function onClickWatchedButton(e) {
   // console.log('click Watched Button');
   toggleTextWatched();
@@ -14,6 +17,7 @@ function onClickWatchedButton(e) {
   }
   watchedFilms.push(currentFilm);
   localStorage.setItem('watched', JSON.stringify(watchedFilms));
+
 }
 
 function onClickQueueButton(e) {
@@ -39,7 +43,8 @@ function toggleTextWatched(e) {
     document.querySelector('.modal__watched').innerText = 'DELETE FROM WATCHED';
   } else {
     document.querySelector('.modal__watched').innerText = 'ADD TO WATCHED';
-  }
+  };
+
 }
 
 function toggleTextQueue(e) {
@@ -50,4 +55,29 @@ function toggleTextQueue(e) {
   }
 }
 
-export { onClickWatchedButton, onClickQueueButton, toggleTextWatched, toggleTextQueue };
+
+
+function refreshWatchedMarkup(savedMovies) { 
+  const MyLibraryIsActive = document.querySelector('.page-library');
+  const btnWatched = document.querySelector('.js-btn-watched');
+  if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
+    renderLibraryMarkup(savedMovies);
+    return
+  };
+  
+ return
+};
+
+
+function refreshQueueMarkup(savedMovies) { 
+  const MyLibraryIsActive = document.querySelector('.page-library');
+  const btnQueue = document.querySelector('.js-btn-queue');
+  if (MyLibraryIsActive.classList.contains('nav__link--current') && btnQueue.classList.contains('js-btn-active')) {
+    renderLibraryMarkup(savedMovies);
+    return
+  };
+ 
+ return
+};
+
+export { onClickWatchedButton, onClickQueueButton, toggleTextWatched, toggleTextQueue, refreshWatchedMarkup, refreshQueueMarkup };
