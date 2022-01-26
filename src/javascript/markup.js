@@ -5,7 +5,10 @@ function renderHomeMarkup(array) {
     .map(({ id, poster_path, title, genre_ids, release_date }) => {
       const date = new Date(release_date);
 
-      const year = date.getFullYear();
+      let year = date.getFullYear();
+      if (release_date === "") {
+        year = "";
+      }
       const genres = genresTextArray(genre_ids);
 
       if (poster_path == null) {
@@ -45,7 +48,10 @@ function renderLibraryMarkup(array) {
   const libraryMarkup = array
     .map(({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
       const date = new Date(release_date);
-      const year = date.getFullYear();
+      let year = date.getFullYear();
+      if (release_date === "") {
+        year = "";
+      }
 
       const genres = genresTextArray(genre_ids);
       if (poster_path == null) {
