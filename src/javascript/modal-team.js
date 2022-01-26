@@ -12,6 +12,7 @@ function handleStudentsModal(e) {
   toTop.classList.add('js-hidden');
   toggleOverflow();
   closeButton.addEventListener('click', onCloseBtnClick);
+  document.addEventListener('keydown', handleEsc);
 }
 
 function onCloseBtnClick() {
@@ -22,4 +23,11 @@ function onCloseBtnClick() {
 
 export function toggleOverflow() {
   body.classList.toggle('overflow-off');
+  document.removeEventListener('keydown', handleEsc);
+}
+
+function handleEsc(e) {
+  if (e.key === 'Escape') {
+    onCloseBtnClick();
+  }
 }
