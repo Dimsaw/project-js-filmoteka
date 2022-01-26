@@ -57,11 +57,11 @@ function toggleTextQueue(e) {
 
 
 
-function refreshWatchedMarkup(savedMovies) { 
+function refreshWatchedMarkup() { 
   const MyLibraryIsActive = document.querySelector('.page-library');
   const btnWatched = document.querySelector('.js-btn-watched');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
-    renderLibraryMarkup(savedMovies);
+    renderLibraryMarkup(JSON.parse(localStorage.getItem('watched')));
     return
   };
   
@@ -69,11 +69,11 @@ function refreshWatchedMarkup(savedMovies) {
 };
 
 
-function refreshQueueMarkup(savedMovies) { 
+function refreshQueueMarkup() { 
   const MyLibraryIsActive = document.querySelector('.page-library');
   const btnQueue = document.querySelector('.js-btn-queue');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnQueue.classList.contains('js-btn-active')) {
-    renderLibraryMarkup(savedMovies);
+    renderLibraryMarkup(JSON.parse(localStorage.getItem('queue')));
     return
   };
  

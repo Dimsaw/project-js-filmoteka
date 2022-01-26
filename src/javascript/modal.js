@@ -130,8 +130,8 @@ function showFilmInfo(e) {
   }
   toggleTextWatched();
   toggleTextQueue();
-  modalWatchedButton.addEventListener('click', () => { onClickWatchedButton(); refreshWatchedMarkup(JSON.parse(localStorage.getItem('watched'))) });
-  modalQueueButton.addEventListener('click', () => { onClickQueueButton(); refreshQueueMarkup(JSON.parse(localStorage.getItem('queue'))) });
+  modalWatchedButton.addEventListener('click', () => { onClickWatchedButton(); refreshWatchedMarkup() });
+  modalQueueButton.addEventListener('click', () => { onClickQueueButton(); refreshQueueMarkup() });
 }
 
 function addLeadingZero(value) {
