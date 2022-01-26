@@ -51,7 +51,7 @@ home.addEventListener('click', onAddHomePage);
       return
     }
 
-    renderLibraryMarkup(JSON.parse(localStorage.getItem("queue")));
+    // renderLibraryMarkup(JSON.parse(localStorage.getItem("queue")));
 
 
     libraryPagination.movePageTo(1)
@@ -76,7 +76,7 @@ home.addEventListener('click', onAddHomePage);
       return
     }
 
-    renderLibraryMarkup(JSON.parse(localStorage.getItem("watched")));
+    // renderLibraryMarkup(JSON.parse(localStorage.getItem("watched")));
 
 
     libraryPagination.movePageTo(1)
@@ -105,11 +105,9 @@ home.addEventListener('click', onAddHomePage);
      }
       
      searchMoviesForLibrary(currentButton, queue)
-    //  if (btnWatched.classList.contains("js-btn-active")) {
        libraryPagination.on('afterMove', ({ page }) => {
           searchMoviesForLibrary(page, queue)
         })
-      // }
     
     return;
      

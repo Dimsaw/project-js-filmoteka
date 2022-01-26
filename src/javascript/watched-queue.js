@@ -1,4 +1,5 @@
 import { renderLibraryMarkup } from "./markup";
+import { libraryPagination, searchMoviesForLibrary } from "./renderLibraryPagination";
 
 
 function onClickWatchedButton(e) {
@@ -61,6 +62,7 @@ function refreshWatchedMarkup() {
   const MyLibraryIsActive = document.querySelector('.page-library');
   const btnWatched = document.querySelector('.js-btn-watched');
   if (MyLibraryIsActive.classList.contains('nav__link--current') && btnWatched.classList.contains('js-btn-active')) {
+    const currentPage = libraryPagination.
     renderLibraryMarkup(JSON.parse(localStorage.getItem('watched')));
     return
   };
