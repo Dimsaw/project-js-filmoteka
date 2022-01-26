@@ -51,6 +51,9 @@ home.addEventListener('click', onAddHomePage);
       return
     }
 
+    renderLibraryMarkup(JSON.parse(localStorage.getItem("queue")));
+
+
     libraryPagination.movePageTo(1)
     libraryPagination.reset(queue.length)
     searchMoviesForLibrary(1, queue);
@@ -59,6 +62,7 @@ home.addEventListener('click', onAddHomePage);
           searchMoviesForLibrary(page, queue)
         })
       }
+
   })
   
   btnWatched.addEventListener("click", () => {
@@ -72,6 +76,9 @@ home.addEventListener('click', onAddHomePage);
       return
     }
 
+    renderLibraryMarkup(JSON.parse(localStorage.getItem("watched")));
+
+
     libraryPagination.movePageTo(1)
     libraryPagination.reset(watched.length)
     searchMoviesForLibrary(1, watched);
@@ -80,6 +87,7 @@ home.addEventListener('click', onAddHomePage);
           searchMoviesForLibrary(page, watched)
         })
       }
+
   })
   
   // ==========================================================

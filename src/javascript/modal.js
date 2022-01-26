@@ -4,6 +4,8 @@ import {
   onClickQueueButton,
   toggleTextWatched,
   toggleTextQueue,
+  refreshWatchedMarkup,
+  refreshQueueMarkup,
 } from './watched-queue';
 import { toggleOverflow } from './modal-team';
 
@@ -152,8 +154,8 @@ function showFilmInfo(e) {
   }
   toggleTextWatched();
   toggleTextQueue();
-  modalWatchedButton.addEventListener('click', onClickWatchedButton);
-  modalQueueButton.addEventListener('click', onClickQueueButton);
+  modalWatchedButton.addEventListener('click', () => { onClickWatchedButton(); refreshWatchedMarkup() });
+  modalQueueButton.addEventListener('click', () => { onClickQueueButton(); refreshQueueMarkup() });
 }
 
 function addLeadingZero(value) {
