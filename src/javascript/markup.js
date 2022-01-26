@@ -89,6 +89,9 @@ function renderLibraryMarkup(array) {
 }
 
 function addLeadingZero(value) {
+  if (value === 10) {
+    return String(value).padEnd(4, '.0');
+  }
   return String(value).padEnd(3, '.0');
 }
 
