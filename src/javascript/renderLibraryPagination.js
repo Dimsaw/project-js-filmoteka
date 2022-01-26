@@ -30,26 +30,16 @@ const libraryPaginationOptions = {
 
 const libraryPagination = new Pagination('library-pagination', libraryPaginationOptions);
 
-libraryPaginationOptions.on('afterMove', ({ page }) => {
-       if (page = 1) {
-         libraryPaginationOptions.reset(queue.length);
-       }
-       searchMoviesForLibrary(page, queue)
-     });
-
 function searchMoviesForLibrary(page, library) {
   let movies = [];
-  let indexElement = 0;
+  let indexElement = 9 * (page-1);
   library.filter((element, index) => {
     if ((index + 1 <= 9 * page) && (index + 1 > indexElement)) {
       movies.push(element);
-      indexElement += 1;
-       }
+    }
   })
-  console.log(movies)
-  console.log(libraryPaginationOptions.totalItems)
-  console.log(library.length)
+
   renderLibraryMarkup(movies);
 }
 
-export { libraryPagination };
+export { libraryPagination, searchMoviesForLibrary };
