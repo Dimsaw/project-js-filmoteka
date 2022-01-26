@@ -5,7 +5,10 @@ function renderHomeMarkup(array) {
     .map(({ id, poster_path, title, genre_ids, release_date }) => {
       const date = new Date(release_date);
 
-      const year = date.getFullYear();
+      let year = date.getFullYear();
+      if (release_date === "") {
+        year = "";
+      }
       const genres = genresTextArray(genre_ids);
 
       if (poster_path == null) {
@@ -45,7 +48,10 @@ function renderLibraryMarkup(array) {
   const libraryMarkup = array
     .map(({ id, poster_path, title, genre_ids, release_date, vote_average }) => {
       const date = new Date(release_date);
-      const year = date.getFullYear();
+      let year = date.getFullYear();
+      if (release_date === "") {
+        year = "";
+      }
 
       const genres = genresTextArray(genre_ids);
       if (poster_path == null) {
@@ -83,6 +89,9 @@ function renderLibraryMarkup(array) {
 }
 
 function addLeadingZero(value) {
+  if (value === 10) {
+    return String(value).padEnd(4, '.0');
+  }
   return String(value).padEnd(3, '.0');
 }
 
@@ -99,4 +108,14 @@ function genresTextArray(genresArray) {
   return genresName.slice(0, 3).join(', ');
 }
 
-export { renderHomeMarkup, renderLibraryMarkup, genresTextArray, NoPosterImage };
+function genresTextArrayFull(genresArray) {
+  const savedGenres = localStorage.getItem('genres');
+  const parseGenres = JSON.parse(savedGenres);
+  const genresName = genresArray.map(genreId => {
+    return parseGenres.find(genreObject => genreObject.id === genreId).name;
+  });
+  
+  return genresName.join(', ');
+}
+
+export { renderHomeMarkup, renderLibraryMarkup, genresTextArrayFull, NoPosterImage };
