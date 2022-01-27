@@ -45,9 +45,11 @@ home.addEventListener('click', onAddHomePage);
     if (returnQueue() == 0) {
       libraryBody.innerHTML = "";
       messageLibrary.innerHTML = "queue is empty";
+      libraryPaginationBlock.classList.add("js-hidden");
       return
     }
 
+    libraryPaginationBlock.classList.remove("js-hidden");
     libraryPagination.movePageTo(1)
     libraryPagination.reset(returnQueue().length)
     searchMoviesForLibrary(1, returnQueue());
@@ -67,9 +69,11 @@ home.addEventListener('click', onAddHomePage);
     if (returnWatched() == 0) {
       libraryBody.innerHTML = "";
       messageLibrary.innerHTML = "watched films is empty";
+      libraryPaginationBlock.classList.add("js-hidden");
       return
     }
 
+    libraryPaginationBlock.classList.remove("js-hidden");
     libraryPagination.movePageTo(1)
     libraryPagination.reset(returnWatched().length)
     searchMoviesForLibrary(1, returnWatched());
@@ -125,7 +129,7 @@ home.addEventListener('click', onAddHomePage);
    } else {
     libraryBody.innerHTML = "";
     messageLibrary.innerHTML = "Your library is empty, add some movies please"
-    libraryPaginationBlock.classList.add("js-hidden");
+    // libraryPaginationBlock.classList.add("js-hidden");
    }
 }
 

@@ -43,9 +43,15 @@ if (window.matchMedia("(min-width: 320px) and (max-width: 767px)").matches) {
     if (window.matchMedia("(min-width: 1024px)").matches) {
       itemsPerPage = 9;
       libraryPagination.setItemsPerPage(9);
-    }
+}
+    
+const messageLibrary = document.querySelector(".library-message");
+    const libraryBody = document.querySelector(".films__list");
+    const libraryPaginationBlock = document.getElementById("library-pagination");
 
 function searchMoviesForLibrary(page, library) {
+  libraryPaginationBlock.classList.remove("js-hidden");
+  messageLibrary.innerHTML = "";
   let movies = [];
   let indexElement = itemsPerPage * (page-1);
   library.filter((element, index) => {
@@ -53,8 +59,16 @@ function searchMoviesForLibrary(page, library) {
       movies.push(element);
     }
   })
+
+  if (movies.length === 0 && library.length === 0) {
+    libraryBody.innerHTML = "";
+    libraryPaginationBlock.classList.add("js-hidden");
+    messageLibrary.innerHTML = "This library is empty";
+    return
+  }
+
   if (movies.length === 0) {
-    libraryPagination.movePageTo(1);
+    libraryPagination.movePageTo(page-1);
     return
   }
   renderLibraryMarkup(movies);
