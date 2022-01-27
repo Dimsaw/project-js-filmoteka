@@ -28,18 +28,44 @@ const libraryPaginationOptions = {
   }
 };
 
+let itemsPerPage = 9;
+
 const libraryPagination = new Pagination('library-pagination', libraryPaginationOptions);
+
+if (window.matchMedia("(min-width: 320px) and (max-width: 767px)").matches) {
+      itemsPerPage = 4;
+      libraryPagination.setItemsPerPage(4);
+    }
+    if (window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches) {
+      itemsPerPage = 8;
+      libraryPagination.setItemsPerPage(8);
+    }
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      itemsPerPage = 9;
+      libraryPagination.setItemsPerPage(9);
+    }
 
 function searchMoviesForLibrary(page, library) {
   let movies = [];
-  let indexElement = 9 * (page-1);
+  let indexElement = itemsPerPage * (page-1);
   library.filter((element, index) => {
-    if ((index + 1 <= 9 * page) && (index + 1 > indexElement)) {
+    if ((index + 1 <= itemsPerPage * page) && (index + 1 > indexElement)) {
       movies.push(element);
     }
   })
-
+  if (movies.length === 0) {
+    libraryPagination.movePageTo(1);
+    return
+  }
   renderLibraryMarkup(movies);
 }
 
-export { libraryPagination, searchMoviesForLibrary };
+function returnQueue() {
+  return JSON.parse(localStorage.getItem('queue'))
+};
+
+function returnWatched() {
+  return JSON.parse(localStorage.getItem('watched'))
+}
+
+export { libraryPagination, searchMoviesForLibrary, returnQueue, returnWatched };
