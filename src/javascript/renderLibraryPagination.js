@@ -35,17 +35,14 @@ const libraryPagination = new Pagination('library-pagination', libraryPagination
 if (window.matchMedia("(min-width: 320px) and (max-width: 767px)").matches) {
       itemsPerPage = 4;
       libraryPagination.setItemsPerPage(4);
-      return
     }
     if (window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches) {
       itemsPerPage = 8;
       libraryPagination.setItemsPerPage(8);
-      return
     }
     if (window.matchMedia("(min-width: 1024px)").matches) {
       itemsPerPage = 9;
       libraryPagination.setItemsPerPage(9);
-      return
     }
 
 function searchMoviesForLibrary(page, library) {
